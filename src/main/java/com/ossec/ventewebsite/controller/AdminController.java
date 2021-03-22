@@ -90,7 +90,7 @@ public class AdminController {
         product.setPrice(product.getPrice());
         product.setWeight(product.getWeight());
         product.setDescription(product.getDescription());
-           String imageUUID;
+        String imageUUID;
         if (!file.isEmpty()){
             imageUUID = file.getOriginalFilename();
             Path fileNameAndPath = Paths.get(uploadDir,imageUUID);
