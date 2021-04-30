@@ -12,6 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.io.IOException;
@@ -21,7 +24,8 @@ import java.util.Optional;
 @Controller
 public class AdminController {
 
-    public static String uploadDir = System.getProperty("user.dir") + "/srs/main/resources/static/productImages";
+    //public static String uploadDir = System.getProperty("user.dir") + "/srs/main/resources/static/productImages";
+    public static String uploadDir = System.getProperty("user.dir") + "/uploads";
     @Autowired
     CategoryService categoryService;
     @Autowired
@@ -94,7 +98,12 @@ public class AdminController {
         if (!file.isEmpty()){
             imageUUID = file.getOriginalFilename();
             Path fileNameAndPath = Paths.get(uploadDir,imageUUID);
-            Files.write(fileNameAndPath,file.getBytes());
+            //Files.write(fileNameAndPath,file.getBytes());
+
+            String filePath = fileNameAndPath.toString();
+            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
+            stream.write(file.getBytes());
+            stream.close();
 
         } else {
             imageUUID = imgName;
