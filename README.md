@@ -21,7 +21,7 @@ INSERT INTO roles (id, name) VALUES
 (1, 'ROLE_ADMIN'),
 (2, 'ROLE_USER');
 ```
-Insérer deux utilisater et les donner leur roles:
+Insérer deux utilisateur et les donner leur roles:
 ```sh
 INSERT INTO users (id, email, password, first_Name, last_Name) VALUES
 (1, 'admin@gmail.com', '$2a$10$moTjfAVBJzNS32q7NPPVh.iAGDbZSkjZJBkdxT5ZLKQ3R1Vh/y9Fi', 'Admin', 'user'),
