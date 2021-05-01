@@ -6,10 +6,6 @@
 
 C'est mon premier projet utilisant Spring Boot. Je voulais faire une application web e-commerce pour l'apprendre. J'ai utilisé  **Spring Boot**, **Spring Security**, **Hibernate** avec **MySQL DataBase**, pour les vues que j'ai utilisé **Thymeleaf** template et **Bootstrap** CSS framework.
 
-## Screenshots
-
-<img src="src/main/resources/static/images/logo.PNG" height=60% width=95%>
-
 ## Installation
 
 You can clone this repository and use it localy:
