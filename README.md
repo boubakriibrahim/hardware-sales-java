@@ -1,10 +1,10 @@
 # **Application Web de Vente de Matériel Informatique - OSSEC**
 
-<img src="src/main/resources/static/images/logo.png" height=100px width=180>
+<img src="src/main/resources/static/images/logo.png" height=240px width=360>
 
 ## Description
 
-C'est mon premier projet utilisant Spring Boot. Je voulais faire une application web e-commerce pour l'apprendre. J'ai utilisé  **Spring Boot**, **Spring Security**, **Spring Data JPA** avec **MySQL DataBase**, pour les vues que j'ai utilisé **Thymeleaf** template et **Bootstrap** CSS framework.
+C'est mon premier projet utilisant Spring Boot. Je voulais faire une application web e-commerce pour l'apprendre. J'ai utilisé  **Spring Boot**, **Spring Security**, **Hibernate** avec **MySQL DataBase**, pour les vues que j'ai utilisé **Thymeleaf** template et **Bootstrap** CSS framework.
 
 ## Screenshots
 
