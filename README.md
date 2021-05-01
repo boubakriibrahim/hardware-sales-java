@@ -8,7 +8,7 @@ C'est mon premier projet utilisant Spring Boot. Je voulais faire une application
 
 ## Installation
 
-You can clone this repository and use it localy:
+Vous pouvez cloner ce projet et l'utiliser localement:
 ```sh
 $ git clone https://https://github.com/boubakriibrahim/vente-website-ossec.git
 ```
