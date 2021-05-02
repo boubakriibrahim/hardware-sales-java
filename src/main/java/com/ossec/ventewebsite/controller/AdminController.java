@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -87,13 +86,14 @@ public class AdminController {
     public String productAddPost(@ModelAttribute("productDTO")ProductDTO productDTO,
                                  @RequestParam("productImage")MultipartFile file,
                                  @RequestParam("imgName")String imgName) throws IOException {
+
         Product product = new Product();
-        product.setId(productDTO.getId());
         product.setName(productDTO.getName());
         product.setCategory(categoryService.getCategoryById(productDTO.getCategoryId()).get());
-        product.setPrice(product.getPrice());
-        product.setWeight(product.getWeight());
-        product.setDescription(product.getDescription());
+        product.setPrice(productDTO.getPrice());
+        product.setWeight(productDTO.getWeight());
+        product.setDescription(productDTO.getDescription());
+
         String imageUUID;
         if (!file.isEmpty()){
             imageUUID = file.getOriginalFilename();
@@ -136,6 +136,39 @@ public class AdminController {
         model.addAttribute("categories", categoryService.getAllCategory());
         model.addAttribute("productDTO", productDTO);
 
-        return "productsAdd";
+        return "productUpdate";
+    }
+
+    @PostMapping("/admin/product/update")
+    public String productUpdatePost(@ModelAttribute("productDTO")ProductDTO productDTO,
+                                 @RequestParam("productImage")MultipartFile file,
+                                 @RequestParam("imgName")String imgName) throws IOException {
+
+        Product product = new Product();
+        product.setName(productDTO.getName());
+        product.setCategory(categoryService.getCategoryById(productDTO.getCategoryId()).get());
+        product.setPrice(productDTO.getPrice());
+        product.setWeight(productDTO.getWeight());
+        product.setDescription(productDTO.getDescription());
+        product.setId(productDTO.getId());
+
+        String imageUUID;
+        if (!file.isEmpty()){
+            imageUUID = file.getOriginalFilename();
+            Path fileNameAndPath = Paths.get(uploadDir,imageUUID);
+            //Files.write(fileNameAndPath,file.getBytes());
+
+            String filePath = fileNameAndPath.toString();
+            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
+            stream.write(file.getBytes());
+            stream.close();
+
+        } else {
+            imageUUID = imgName;
+        }
+        product.setImageName(imageUUID);
+        productService.addProduct(product);
+
+        return "redirect:/admin/products";
     }
 }

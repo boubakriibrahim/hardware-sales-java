@@ -39,8 +39,8 @@
     </div>
 </nav>
 <div class="container">
-    <h3>Add a new Product</h3>
-    <form th:action="@{/admin/products/add}" method="post" th:object="${productDTO}" enctype="multipart/form-data">
+    <h3>Update the Product</h3>
+    <form th:action="@{/admin/product/update/}" method="post" th:object="${productDTO}" enctype="multipart/form-data">
         <div class="row">
             <div class="col-sm-5">
 
